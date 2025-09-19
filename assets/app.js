@@ -1,20 +1,20 @@
-/* 轻量假数据 + 小交互 */
+/* Lightweight mock data + small interactions (EN) */
 
 window.DemoData = {
   alerts: [
-    { id: 'A-1021', type: '事故', level: '高', road: 'M3 Pacific', time: '14:22', status:'未处理'},
-    { id: 'A-1022', type: '拥堵', level: '中', road: 'Gympie Rd', time: '14:20', status:'处理中'},
-    { id: 'A-1023', type: '施工', level: '低', road: 'Coronation Dr', time: '13:58', status:'已解除'}
+    { id: 'A-1021', type: 'Accident',     level: 'High',   road: 'M3 Pacific',     time: '14:22', status: 'Unprocessed' },
+    { id: 'A-1022', type: 'Congestion',   level: 'Medium', road: 'Gympie Rd',      time: '14:20', status: 'In Progress' },
+    { id: 'A-1023', type: 'Construction', level: 'Low',    road: 'Coronation Dr',  time: '13:58', status: 'Cleared' }
   ],
-  tickets:[
-    { id:'T-0001', title:'红绿灯长期故障', area:'CBD', type:'设备', status:'待处理' },
-    { id:'T-0002', title:'早高峰严重拥堵', area:'Toowong', type:'交通流', status:'处理中' },
-    { id:'T-0003', title:'摄像头误报车辆', area:'South Bank', type:'算法', status:'已解决' },
-    { id:'T-0004', title:'积水导致封路', area:'Moorooka', type:'天气', status:'驳回' }
+  tickets: [
+    { id:'T-0001', title:'Traffic light long-term malfunction', area:'CBD',        type:'Equipment',    status:'Pending' },
+    { id:'T-0002', title:'Severe rush-hour congestion',         area:'Toowong',    type:'Traffic Flow', status:'In Progress' },
+    { id:'T-0003', title:'Camera false positives',              area:'South Bank', type:'Algorithm',    status:'Resolved' },
+    { id:'T-0004', title:'Road closure due to flooding',        area:'Moorooka',   type:'Weather',      status:'Rejected' }
   ]
 };
 
-/* 仪表盘：渲染告警列表 */
+/* Dashboard: render alert list */
 function renderAlerts(){
   const el = document.querySelector('#alert-list');
   if(!el) return;
@@ -22,41 +22,42 @@ function renderAlerts(){
   DemoData.alerts.forEach(a=>{
     const li = document.createElement('div');
     li.className = 'item';
+    const levelClass = a.level==='High' ? 'danger' : (a.level==='Medium' ? 'warn' : 'ok');
     li.innerHTML = `
       <div>
-        <div><b>${a.id}</b> · ${a.type} · <span class="badge ${a.level==='高'?'danger':a.level==='中'?'warn':'ok'}">等级：${a.level}</span></div>
-        <div class="muted">道路：${a.road}　时间：${a.time}</div>
+        <div><b>${a.id}</b> · ${a.type} · <span class="badge ${levelClass}">Level: ${a.level}</span></div>
+        <div class="muted">Road: ${a.road} &emsp; Time: ${a.time}</div>
       </div>
       <div class="badge">${a.status}</div>`;
     el.appendChild(li);
   });
 }
 
-/* 反馈页：筛选 + 渲染 */
+/* Feedback page: filter + render */
 function renderTickets(){
   const wrap = document.querySelector('#ticket-body');
   if(!wrap) return;
-  const kw = (document.querySelector('#kw')?.value || '').trim();
-  const st = document.querySelector('input[name="statusTab"]:checked')?.value || '全部';
+  const kw = (document.querySelector('#kw')?.value || '').trim().toLowerCase();
+  const st = document.querySelector('input[name="statusTab"]:checked')?.value || 'All';
   let rows = DemoData.tickets;
-  if(st!=='全部') rows = rows.filter(t=>t.status===st);
-  if(kw) rows = rows.filter(t=> (t.id+t.title+t.area+t.type).includes(kw));
+  if(st!=='All') rows = rows.filter(t=>t.status===st);
+  if(kw) rows = rows.filter(t=> (t.id+t.title+t.area+t.type).toLowerCase().includes(kw));
   wrap.innerHTML = rows.map(t=>`
     <tr>
       <td>${t.id}</td>
       <td>${t.title}</td>
       <td>${t.area}</td>
       <td>${t.type}</td>
-      <td><span class="badge ${t.status==='已解决'?'ok':t.status==='待处理'?'warn':t.status==='驳回'?'danger':''}">${t.status}</span></td>
-      <td><button class="btn" onclick="alert('打开工单 ${t.id} 详情（可接入后端）')">详情</button></td>
+      <td><span class="badge ${t.status==='Resolved'?'ok':t.status==='Pending'?'warn':t.status==='Rejected'?'danger':''}">${t.status}</span></td>
+      <td><button class="btn" onclick="alert('Open ticket ${t.id} details (demo)')">Details</button></td>
     </tr>`).join('');
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
   renderAlerts();
   renderTickets();
-  // 假的“柱状图/折线图”占位
+  // Fake bar/line chart placeholders
   document.querySelectorAll('[data-mini-chart]').forEach(el=>{
-    el.textContent = el.getAttribute('data-mini-chart') + '（占位图）';
+    el.textContent = el.getAttribute('data-mini-chart') + ' (placeholder)';
   });
 });
