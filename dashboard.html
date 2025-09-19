@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard · Smart Traffic</title>
+  ...
+</head>
+<body>
+  <nav class="nav">
+    <div class="inner">
+      <div><b>🗺️ Admin · Emergency/Coordination Platform</b></div>
+      <div class="links">
+        <a href="index.html">Public</a>
+        <a class="active" href="dashboard.html">Admin</a>
+        <a href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Top: Map + Right Search -->
+    <section class="grid cols-2">
+      <div class="panel">
+        <h3>City Situation (Clickable Devices/Roads/Heatmap)</h3>
+        <div class="placeholder" style="height:300px">Map Placeholder (to integrate Mapbox/Leaflet later)</div>
+        <div class="toolbar" style="margin-top:12px">
+          <button class="btn">Heatmap</button>
+          <button class="btn">Cameras</button>
+          <button class="btn">Construction</button>
+          <button class="btn">Traffic Events</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Public Posting / Search</h3>
+        <div class="toolbar">
+          <input class="input" placeholder="Enter announcement or keywords…">
+          <button class="btn primary">Post</button>
+        </div>
+        <div class="list" style="margin-top:12px">
+          <div class="item"><div>Today 20:00–5:00 M3 routine maintenance, please detour in advance.</div><span class="badge">Notice</span></div>
+          <div class="item"><div>Heavy rain warning upgraded — Level 2 emergency coordination activated.</div><span class="badge danger">Emergency</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Middle: KPI + Charts -->
+    <section class="grid cols-3" style="margin-top:16px">
+      <div class="card kpi"><div>Camera Uptime</div><b>96.4%</b></div>
+      <div class="card kpi"><div>Handled within 10 minutes</div><b>82.1%</b></div>
+      <div class="card kpi"><div>Average Speed</div><b>43 km/h</b></div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:8px">
+      <div class="card"><h3>Hourly Events</h3><div class="placeholder" data-mini-chart="Bar Chart"></div></div>
+      <div class="card"><h3>Key Road Speeds</h3><div class="placeholder" data-mini-chart="Line Chart"></div></div>
+    </section>
+
+    <!-- Bottom: Real-time Event Queue -->
+    <section class="panel" style="margin-top:16px">
+      <h3>Real-time Event Queue</h3>
+      <div id="alert-list" class="list"></div>
+      <div class="toolbar" style="margin-top:12px">
+        <button class="btn success" onclick="alert('Quick link Fire/Police/Road Authority (demo)')">Quick Link</button>
+        <button class="btn">Export Report</button>
+      </div>
+    </section>
+
+    <footer>© Smart Traffic Demo · Admin</footer>
+  </div>
+</body>
+</html>

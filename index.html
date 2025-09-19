@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Public · Smart Traffic</title>
+  ...
+</head>
+<body>
+  <nav class="nav">
+    <div class="inner">
+      <div><b>🚦 Smart Traffic · Public</b></div>
+      <div class="links">
+        <a class="active" href="index.html">Public</a>
+        <a href="dashboard.html">Admin</a>
+        <a href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="grid cols-2">
+      <!-- Left: Traffic/Accident Card -->
+      <div class="card">
+        <h3>Nearby Traffic & Quick Actions</h3>
+        <div class="placeholder">Road Segment Map (replaceable with static image or Map SDK)</div>
+        <div class="toolbar" style="margin-top:12px">
+          <button class="btn primary" onclick="alert('Open navigation app/recommended detour')">Detour Recommendation</button>
+          <button class="btn" onclick="alert('Subscribe to real-time alerts for this road')">Subscribe Alerts</button>
+          <button class="btn" onclick="location.href='feedback.html'">Give Feedback</button>
+        </div>
+      </div>
+
+      <!-- Right: Announcements -->
+      <div class="card">
+        <h3>Announcements</h3>
+        <div class="toolbar">
+          <input class="input" placeholder="Search roads/keywords…">
+          <button class="btn">Search</button>
+        </div>
+        <div class="list" style="margin-top:12px">
+          <div class="item"><div><b>Municipal Notice:</b> Temporary closure of part of M1 this Friday night for maintenance.</div><span class="badge warn">Reminder</span></div>
+          <div class="item"><div><b>Travel Advisory:</b> Large event in CBD, public transport recommended.</div><span class="badge">Info</span></div>
+          <div class="item"><div><b>Emergency Notice:</b> Blue rainstorm warning, drive cautiously, watch for flooding.</div><span class="badge danger">Emergency</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom: User Reports -->
+    <section class="panel" style="margin-top:16px">
+      <h3>Traffic Report / Comments</h3>
+      <div class="grid cols-2">
+        <div>
+          <div class="hero">
+            <input class="input" type="text" placeholder="Location/Road">
+            <textarea class="input" rows="6" placeholder="Describe issue (congestion/accident/damage/flooding, etc.)…"></textarea>
+            <div class="toolbar">
+              <button class="btn">Upload Photo</button>
+              <button class="btn">Add Video</button>
+              <button class="btn primary" onclick="alert('Submitted (demo)')">Submit Report</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin:8px 0">Latest Reports</h4>
+          <div class="list">
+            <div class="item"><div>Coronation Dr water level high, drive slowly.</div><span class="badge ok">Dispatched</span></div>
+            <div class="item"><div>South Bank underground parking entrance congested.</div><span class="badge">New Report</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© Smart Traffic Demo · Public</footer>
+  </div>
+</body>
+</html>

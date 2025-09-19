@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Feedback · Ticket Handling</title>
+  ...
+</head>
+<body>
+  <nav class="nav">
+    <div class="inner">
+      <div><b>📝 Feedback / Tickets</b></div>
+      <div class="links">
+        <a href="index.html">Public</a>
+        <a href="dashboard.html">Admin</a>
+        <a class="active" href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Top Search -->
+    <section class="panel">
+      <h3>Search Feedback</h3>
+      <div class="toolbar">
+        <input id="kw" class="input" placeholder="Search by ID/Title/Area/Type…">
+        <button class="btn" onclick="renderTickets()">Search</button>
+        <button class="btn" onclick="document.querySelector('#kw').value='';renderTickets()">Clear</button>
+      </div>
+    </section>
+
+    <!-- Status Filter -->
+    <section class="toolbar" style="margin:12px 0">
+      <label class="badge"><input type="radio" name="statusTab" value="All" checked onchange="renderTickets()"> All</label>
+      <label class="badge warn"><input type="radio" name="statusTab" value="Pending" onchange="renderTickets()"> Pending</label>
+      <label class="badge"><input type="radio" name="statusTab" value="In Progress" onchange="renderTickets()"> In Progress</label>
+      <label class="badge ok"><input type="radio" name="statusTab" value="Resolved" onchange="renderTickets()"> Resolved</label>
+      <label class="badge danger"><input type="radio" name="statusTab" value="Rejected" onchange="renderTickets()"> Rejected</label>
+    </section>
+
+    <!-- Ticket List -->
+    <section class="panel">
+      <h3>Feedback List</h3>
+      <div class="card" style="overflow:auto">
+        <table class="table">
+          <thead>
+            <tr><th>Ticket ID</th><th>Title</th><th>Area</th><th>Type</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="ticket-body"></tbody>
+        </table>
+      </div>
+      <div class="toolbar" style="margin-top:12px">
+        <button class="btn primary" onclick="alert('Create New Ticket (demo)')">Create New Ticket</button>
+        <button class="btn" onclick="alert('Batch Export (demo)')">Export</button>
+      </div>
+    </section>
+
+    <footer>© Smart Traffic Demo · Feedback</footer>
+  </div>
+</body>
+</html>

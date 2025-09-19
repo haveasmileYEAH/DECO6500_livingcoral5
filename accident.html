@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accident Frontline Staff Interface</title>
+  ...
+</head>
+<body>
+  <div class="container">
+    <div class="header">Accident Frontline Staff (Inspection/Maintenance) Interface</div>
+
+    <!-- Basic Info Card -->
+    <div class="card">
+      <h3>Basic Information</h3>
+      <div>
+        <button class="btn btn-blue">Edit</button>
+        <button class="btn btn-red">Camera Alarm</button>
+        <button class="btn btn-green" onclick="openModal()">View Monitor</button>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" placeholder="Enter address">
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <select>
+          <option>Please select type</option>
+          <option>Electrical</option>
+          <option>Mechanical</option>
+          <option>Pipeline</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Estimated Time</label>
+        <input type="text" placeholder="e.g., 2 hours">
+      </div>
+
+      <div class="form-group">
+        <label>Problem Description</label>
+        <textarea placeholder="Enter detailed problem description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Feedback</label>
+        <textarea placeholder="Enter feedback"></textarea>
+      </div>
+    </div>
+
+    <!-- Footer Buttons -->
+    <div class="footer">
+      <button class="btn btn-gray">Reset</button>
+      <button class="btn btn-green">Submit</button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="monitorModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Monitoring Screen</h2>
+      <img src="https://via.placeholder.com/640x360.png?text=Monitoring+Screen" alt="Monitoring Screen">
+    </div>
+  </div>
+</body>
+</html>
